@@ -12,7 +12,7 @@ public class HomePage extends AbstractPage {
 		this.driver = driver;
 	}
 
-	public String getHomepageMessage() throws InterruptedException {
+	public String getHomepageMessage(){
 		waitForControlVisible(driver, HomePageUI.WELCOM_MES);
 		return getTextElement(driver, HomePageUI.WELCOM_MES);
 	}

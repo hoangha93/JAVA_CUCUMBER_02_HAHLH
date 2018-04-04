@@ -140,4 +140,8 @@ public class NewCustomerPage extends AbstractPage {
 		waitForControlVisible(driver, NewCustomerPageUI.EMAIL_MES);
 		return getTextElement(driver, NewCustomerPageUI.EMAIL_MES);
 	}
+
+	public void clickGender(String string) {
+		
+	}
 }

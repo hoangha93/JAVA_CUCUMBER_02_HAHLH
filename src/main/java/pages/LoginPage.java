@@ -22,7 +22,7 @@ public class LoginPage extends AbstractPage {
 		return PageFactoryManager.getRegisterPage(driver);
 	}
 
-	public void inputUserName(String user) throws InterruptedException {
+	public void inputUserName(String user){
 		waitForControlVisible(driver, LoginPageUI.USENAME_TXT);
 		sendkeyToElement(driver, LoginPageUI.USENAME_TXT, user);
 	}
