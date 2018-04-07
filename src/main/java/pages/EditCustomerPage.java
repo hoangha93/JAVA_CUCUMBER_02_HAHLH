@@ -53,7 +53,7 @@ public class EditCustomerPage extends AbstractPage {
 	}
 
 	public void clickSubmit() {
-		clickToElement(driver, EditCustomerPageUI.SUBMIT_BTN);
+		clickToElement(driver, EditCustomerPageUI.ACCOUNT_SUBMIT_BTN);
 	}
 
 	public String getMessage() {

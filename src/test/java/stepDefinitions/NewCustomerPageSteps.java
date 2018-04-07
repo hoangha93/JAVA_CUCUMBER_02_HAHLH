@@ -15,15 +15,15 @@ import pages.NewCustomerPage;
 
 public class NewCustomerPageSteps extends AbstractTest {
 	WebDriver driver;
-	private World world;
+	private ShareState shareState;
 
 	NewCustomerPage newCustomerPage;
 	String rearEmail = randomNumber() + "@gmail.com";
 
-	public NewCustomerPageSteps(World world_) {
+	public NewCustomerPageSteps(ShareState shareState) {
 		driver = Hooks.openBrowser();
 		newCustomerPage = PageFactoryManager.getNewCustomerPage(driver);
-		this.world = world_;
+		this.shareState = shareState;
 	}
 
 	@Given("^Input data to all fields required$")
@@ -52,10 +52,8 @@ public class NewCustomerPageSteps extends AbstractTest {
 
 	@Then("^Customer infomation should be shown$")
 	public void customerInfomationShouldBeShown(DataTable table) {
-		//SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		List<Map<String, String>> customer = table.asMaps(String.class, String.class);
 		verifyEquals(customer.get(0).get("CustomerName"), newCustomerPage.getCustomerName());
-		//verifyEquals(customer.get(0).get("DateOfBirth"), df.format(newCustomerPage.getDateOfBirth() + ""));
 		verifyEquals(customer.get(0).get("Address"), newCustomerPage.getAddress());
 		verifyEquals(customer.get(0).get("City"), newCustomerPage.getCity());
 		verifyEquals(customer.get(0).get("Phone"), newCustomerPage.getMobile());
@@ -64,11 +62,7 @@ public class NewCustomerPageSteps extends AbstractTest {
 
 	@Then("^Get CustomerID for edit customer function$")
 	public void getCustomerIDForEditCustomerFunction() {
-		world.customerId = newCustomerPage.getCustomerId();
-	}
-
-	@Given("^I open Edit Customer page$")
-	public void iOpenEditCustomerPage() {
-		newCustomerPage.openEditCustomerPage(driver);
+		shareState.customerId = newCustomerPage.getCustomerId();
+		System.out.println(shareState.customerId);
 	}
 }

@@ -27,7 +27,7 @@ Feature: Payment feature
       | Dam Dao      | 16/10/1989 | Da nang | Da nang | 01223456789 | automation |
     And Get CustomerID for edit customer function
 
-
+  @demo
   Scenario: Edit Customer
     Given I open Edit Customer page
     When Input CustomerID

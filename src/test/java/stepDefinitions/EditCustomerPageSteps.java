@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import commons.AbstractTest;
 import commons.PageFactoryManager;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumberOption.Hooks;
@@ -12,19 +13,25 @@ import pages.EditCustomerPage;
 
 public class EditCustomerPageSteps extends AbstractTest {
 	WebDriver driver;
-	private World world;
+	private ShareState shareState;
 
 	EditCustomerPage editCustomerPage;
 
-	public EditCustomerPageSteps(World world_) {
+	@Given("^I open Edit Customer page$")
+	public void iOpenEditCustomerPage() {
+		editCustomerPage.openEditCustomerPage(driver);
+	}
+
+	public EditCustomerPageSteps(ShareState shareState) {
 		driver = Hooks.openBrowser();
 		editCustomerPage = PageFactoryManager.getEditCustomerPage(driver);
-		this.world = world_;
+		this.shareState = shareState;
 	}
 
 	@When("^Input CustomerID$")
 	public void inputCustomerID() {
-		editCustomerPage.inputCustomerID(world.customerId);
+		System.out.println(shareState.customerId);
+		editCustomerPage.inputCustomerID(shareState.customerId);
 	}
 
 	@Then("^Click to Submit$")

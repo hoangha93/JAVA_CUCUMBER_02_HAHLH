@@ -11,7 +11,7 @@ import cucumber.api.SnippetType;
         features = "src/test/java/features",
         glue = "stepDefinitions",
         monochrome = true,
-        plugin = { "pretty","html:target/cucumber", "junit:target/cucumber/cucumber.xml"},
+        plugin = { "pretty","html:target/site/cucumber-reporting","json:target/site/cucumber.json", "junit:target/cucumber/cucumber.xml"},
         snippets = SnippetType.CAMELCASE,
         tags = { "@demo" })
 
