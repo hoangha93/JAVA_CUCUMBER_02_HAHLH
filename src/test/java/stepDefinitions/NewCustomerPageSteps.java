@@ -11,6 +11,7 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumberOption.Hooks;
+import pages.EditCustomerPage;
 import pages.NewCustomerPage;
 
 public class NewCustomerPageSteps extends AbstractTest {
@@ -18,6 +19,7 @@ public class NewCustomerPageSteps extends AbstractTest {
 	private ShareState shareState;
 
 	NewCustomerPage newCustomerPage;
+	EditCustomerPage editCustomerPage;
 	String rearEmail = randomNumber() + "@gmail.com";
 
 	public NewCustomerPageSteps(ShareState shareState) {
@@ -63,6 +65,11 @@ public class NewCustomerPageSteps extends AbstractTest {
 	@Then("^Get CustomerID for edit customer function$")
 	public void getCustomerIDForEditCustomerFunction() {
 		shareState.customerId = newCustomerPage.getCustomerId();
-		System.out.println(shareState.customerId);
+	}
+	
+
+	@Given("^I open Edit Customer page$")
+	public void iOpenEditCustomerPage() {
+		editCustomerPage=newCustomerPage.openEditCustomerPage(driver);
 	}
 }

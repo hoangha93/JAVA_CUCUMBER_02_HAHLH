@@ -17,11 +17,6 @@ public class EditCustomerPageSteps extends AbstractTest {
 
 	EditCustomerPage editCustomerPage;
 
-	@Given("^I open Edit Customer page$")
-	public void iOpenEditCustomerPage() {
-		editCustomerPage.openEditCustomerPage(driver);
-	}
-
 	public EditCustomerPageSteps(ShareState shareState) {
 		driver = Hooks.openBrowser();
 		editCustomerPage = PageFactoryManager.getEditCustomerPage(driver);
@@ -30,7 +25,6 @@ public class EditCustomerPageSteps extends AbstractTest {
 
 	@When("^Input CustomerID$")
 	public void inputCustomerID() {
-		System.out.println(shareState.customerId);
 		editCustomerPage.inputCustomerID(shareState.customerId);
 	}
 

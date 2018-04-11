@@ -86,12 +86,12 @@ public class Hooks {
 				driver.quit();
 				System.gc();
 				if (driver.toString().toLowerCase().contains("chrome")) {
-					String cmd = "taskill /IM chromedriver.exe /F";
+					String cmd = "taskkill /IM chromedriver.exe /F";
 					Process process = Runtime.getRuntime().exec(cmd);
 					process.waitFor();
 				}
 				if (driver.toString().toLowerCase().contains("ie")) {
-					String cmd = "taskill /IM IEDriverServer.exe /F";
+					String cmd = "taskkill /IM IEDriverServer.exe /F";
 					Process process = Runtime.getRuntime().exec(cmd);
 					process.waitFor();
 				}
