@@ -2,6 +2,7 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 
+import pages.AbstractPageObject;
 import pages.BalanceEnquiryPage;
 import pages.DeleteAccountPage;
 import pages.DeleteCustomerPage;
@@ -28,6 +29,7 @@ public class PageFactoryManager {
 	public static FundTransferPage fundTransferPage;
 	public static BalanceEnquiryPage balanceEnquiryPage;
 	public static DeleteAccountPage deleteAccountPage;
+	public static AbstractPageObject abstractPage;
 
 	public static LoginPage getLoginPage(WebDriver driver) {
 		if (loginPage == null) {
@@ -111,5 +113,12 @@ public class PageFactoryManager {
 			return new DeleteAccountPage(driver);
 		}
 		return deleteAccountPage;
+	}
+
+	public static AbstractPageObject getAbstractPage(WebDriver driver) {
+		if (abstractPage == null) {
+			return new AbstractPageObject(driver);
+		}
+		return abstractPage;
 	}
 }

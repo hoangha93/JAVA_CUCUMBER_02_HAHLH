@@ -41,13 +41,13 @@ public class AbstractTest {
 		return driver;
 	}
 
-	public int randomNumber() {
+	public static int randomNumber() {
 		Random random = new Random();
 		int number = random.nextInt(9999) + 1;
 		return number;
 	}
 
-	protected boolean verifyPassed(boolean condition, boolean flag) {
+	public boolean verifyPassed(boolean condition, boolean flag) {
 		boolean pass = true;
 		if (flag == false) {
 			try {
@@ -67,11 +67,11 @@ public class AbstractTest {
 		return pass;
 	}
 
-	protected boolean verifyTrue(boolean condition) {
+	public boolean verifyTrue(boolean condition) {
 		return verifyPassed(condition, false);
 	}
 
-	protected boolean verifyFailed(boolean condition, boolean flag) {
+	public boolean verifyFailed(boolean condition, boolean flag) {
 		boolean pass = true;
 		if (flag = false) {
 			try {
@@ -91,11 +91,11 @@ public class AbstractTest {
 		return pass;
 	}
 
-	protected boolean verifyFalse(boolean condition) {
+	public boolean verifyFalse(boolean condition) {
 		return verifyFailed(condition, false);
 	}
 
-	protected boolean verifyEquals(Object actual, Object expected, boolean flag) {
+	public boolean verifyEquals(Object actual, Object expected, boolean flag) {
 		boolean pass = true;
 		if (flag == false) {
 			try {
@@ -110,7 +110,7 @@ public class AbstractTest {
 		return pass;
 	}
 
-	protected boolean verifyEquals(Object actual, Object expected) {
+	public boolean verifyEquals(Object actual, Object expected) {
 		return verifyEquals(actual, expected, false);
 	}
 

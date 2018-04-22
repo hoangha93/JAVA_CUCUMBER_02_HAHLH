@@ -57,7 +57,6 @@ public class Hooks {
 			driver.get(Constant.URL_BANK);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-			// LOGGER.info("----------START BROWSER----------");
 			System.out.println("----------START BROWSER----------");
 		}
 		return driver;
@@ -71,37 +70,38 @@ public class Hooks {
 
 	public static void close() {
 		try {
-			openBrowser().quit();
-			driver = null;
-			LOGGER.info("Closing the browser");
-		} catch (UnreachableBrowserException e) {
-			LOGGER.info("Cannot close browser : unreachable browser");
-		}
-
-	}
-
-	public static void closeBrowser() {
-		try {
 			if (driver != null) {
-				driver.quit();
-				System.gc();
-				if (driver.toString().toLowerCase().contains("chrome")) {
-					String cmd = "taskkill /IM chromedriver.exe /F";
-					Process process = Runtime.getRuntime().exec(cmd);
-					process.waitFor();
-				}
-				if (driver.toString().toLowerCase().contains("ie")) {
-					String cmd = "taskkill /IM IEDriverServer.exe /F";
-					Process process = Runtime.getRuntime().exec(cmd);
-					process.waitFor();
-				}
-				// LOGGER.info("----------QUIT BROWSER----------");
-				System.out.println("----------QUIT BROWSER----------");
+				openBrowser().quit();
+				System.out.println("------------Closing the browser------------");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
+		} catch (UnreachableBrowserException e) {
+			System.out.println("------------Cannot close browser : unreachable browser-------------");
 		}
+
 	}
+
+	// public static void closeBrowser() {
+	// try {
+	// if (driver != null) {
+	// driver.quit();
+	// System.gc();
+	// if (driver.toString().toLowerCase().contains("chrome")) {
+	// String cmd = "taskkill /IM chromedriver.exe /F";
+	// Process process = Runtime.getRuntime().exec(cmd);
+	// process.waitFor();
+	// }
+	// if (driver.toString().toLowerCase().contains("ie")) {
+	// String cmd = "taskkill /IM IEDriverServer.exe /F";
+	// Process process = Runtime.getRuntime().exec(cmd);
+	// process.waitFor();
+	// }
+	// // LOGGER.info("----------QUIT BROWSER----------");
+	// System.out.println("----------QUIT BROWSER----------");
+	// }
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// System.out.println(e.getMessage());
+	// }
+	// }
 
 }

@@ -18,8 +18,8 @@ public class LoginPageSteps {
 		loginPage = PageFactoryManager.getLoginPage(driver);
 	}
 
-	@Given("^I input \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void iInputSomethingAndSomething(String userName, String password) {
+	@Given("^I input username \"([^\"]*)\" and password \"([^\"]*)\"$")
+	public void iInputUsernameAndPassword(String userName, String password) {
 		loginPage.inputUserName(userName);
 		loginPage.inputPassword(password);
 	}

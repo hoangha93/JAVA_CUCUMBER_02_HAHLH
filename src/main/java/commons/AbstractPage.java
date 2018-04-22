@@ -77,7 +77,23 @@ public class AbstractPage {
 		element.sendKeys(text);
 	}
 
+	public void sendkeyToElement(WebDriver driver, String locator, String value, String text) {
+		String checkField = value;
+		locator = String.format(locator, value);
+		WebElement element = driver.findElement(By.xpath(locator));
+		if (!checkField.equals("dob")) {
+			element.clear();
+		}
+		element.sendKeys(text);
+	}
+
 	public void selectItemInDropdown(WebDriver driver, String locator, String item) {
+		Select select = new Select(driver.findElement(By.xpath(locator)));
+		select.selectByVisibleText(item);
+	}
+
+	public void selectItemInDropdown(WebDriver driver, String locator, String value, String item) {
+		locator = String.format(locator, value);
 		Select select = new Select(driver.findElement(By.xpath(locator)));
 		select.selectByVisibleText(item);
 	}
@@ -93,6 +109,12 @@ public class AbstractPage {
 	}
 
 	public String getTextElement(WebDriver driver, String locator) {
+		WebElement element = driver.findElement(By.xpath(locator));
+		return element.getText();
+	}
+
+	public String getTextElement(WebDriver driver, String locator, String value) {
+		locator = String.format(locator, value);
 		WebElement element = driver.findElement(By.xpath(locator));
 		return element.getText();
 	}
