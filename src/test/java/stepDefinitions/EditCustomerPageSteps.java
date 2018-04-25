@@ -23,5 +23,6 @@ public class EditCustomerPageSteps extends AbstractTest {
 	@When("^Input CustomerID$")
 	public void inputCustomerID() {
 		editCustomerPage.inputCustomerID(ShareData.customerId);
+		System.out.println(ShareData.customerId);
 	}
 }
